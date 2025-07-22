@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Job Scope India Design System - Professional & Modern */
 
 @layer base {
   :root {
@@ -17,26 +15,39 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Professional Blue Theme */
+    --primary: 214 100% 32%;        /* Deep professional blue */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 214 100% 45%;   /* Brighter blue for effects */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 174 72% 38%;       /* Professional teal */
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 24 100% 58%;          /* Warm orange for CTAs */
+    --accent-foreground: 0 0% 100%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 214 100% 32%;
 
-    --radius: 0.5rem;
+    /* Design System Extensions */
+    --gradient-primary: linear-gradient(135deg, hsl(214 100% 32%), hsl(214 100% 45%));
+    --gradient-secondary: linear-gradient(135deg, hsl(174 72% 38%), hsl(174 72% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(214 100% 32%), hsl(174 72% 38%));
+    
+    --shadow-elegant: 0 10px 30px -10px hsl(214 100% 32% / 0.3);
+    --shadow-card: 0 4px 20px -2px hsl(214 100% 32% / 0.08);
+    --shadow-glow: 0 0 40px hsl(214 100% 45% / 0.4);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -65,24 +76,25 @@ All colors MUST be HSL.
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 214 100% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 214 100% 55%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 174 72% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 24 100% 65%;
+    --accent-foreground: 0 0% 100%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 214 100% 45%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +112,81 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  .font-hindi {
+    font-family: 'Mukta', 'Inter', sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/50;
+  }
+
+  /* Smooth animations */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Blog content styles */
+  .prose-blog {
+    @apply prose prose-lg max-w-none;
+  }
+  
+  .prose-blog h1 {
+    @apply text-3xl md:text-4xl font-bold text-foreground mb-6;
+  }
+  
+  .prose-blog h2 {
+    @apply text-2xl md:text-3xl font-semibold text-foreground mt-8 mb-4;
+  }
+  
+  .prose-blog h3 {
+    @apply text-xl md:text-2xl font-medium text-foreground mt-6 mb-3;
+  }
+  
+  .prose-blog p {
+    @apply text-muted-foreground leading-relaxed mb-4;
+  }
+  
+  .prose-blog a {
+    @apply text-primary hover:text-primary-glow transition-colors;
+  }
+
+  .prose-blog blockquote {
+    @apply border-l-4 border-primary/30 pl-4 italic text-muted-foreground bg-muted/50 py-2 rounded-r;
+  }
+
+  .prose-blog code {
+    @apply bg-muted px-2 py-1 rounded text-sm font-mono;
+  }
+
+  .prose-blog pre {
+    @apply bg-muted p-4 rounded-lg overflow-x-auto;
   }
 }
