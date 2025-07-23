@@ -1,3 +1,4 @@
+
 import { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
@@ -13,13 +14,13 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="fixed top-0 z-50 w-full border-b bg-background">
         <div className="container flex h-12 md:h-16 items-center justify-between px-3 md:px-4">
           <Link to="/" className="flex items-center space-x-2">
             <div className="h-6 w-6 md:h-8 md:w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
               <span className="text-white font-bold text-xs md:text-sm">JSI</span>
             </div>
-            <span className="font-bold text-lg md:text-xl text-foreground">Job Scope India</span>
+            <span className="font-bold text-lg md:text-xl text-foreground">JSI</span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-6">
@@ -71,7 +72,7 @@ export default function Layout({ children }: LayoutProps) {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1">
+      <main className="flex-1 pt-12 md:pt-16">
         {children}
       </main>
 

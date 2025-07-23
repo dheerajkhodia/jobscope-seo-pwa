@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardContent } from '@/components/ui/card'
@@ -145,7 +146,7 @@ export default function Blog() {
                         {post.tags.slice(0, 3).map((tag, index) => (
                           <span 
                             key={index} 
-                            className="text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded-full"
+                            className="text-xs text-muted-foreground border border-border px-2 py-1 rounded-full"
                           >
                             {tag}
                           </span>

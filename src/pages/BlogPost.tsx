@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
@@ -72,7 +73,7 @@ export default function BlogPostPage() {
   }
 
   const currentUrl = `${window.location.origin}/blog/${post.slug}`
-  const readingTime = Math.ceil(post.content.split(' ').length / 200) // Approximate reading time
+  const readingTime = Math.ceil(post.content.split(' ').length / 200)
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -109,17 +110,17 @@ export default function BlogPostPage() {
         structuredData={structuredData}
       />
 
-      <article className="container mx-auto px-4 py-12">
+      <article className="container mx-auto px-4 py-12 pt-20">
         <div className="max-w-4xl mx-auto">
           {/* Back to Blog */}
-          <Link to="/blog" className="inline-flex items-center text-primary hover:text-primary-glow transition-colors mb-8">
+          <Link to="/blog" className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Blog
           </Link>
 
           {/* Article Header */}
           <header className="mb-12">
-            <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+            <h1 className="text-2xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
               {post.title}
             </h1>
             
@@ -127,7 +128,7 @@ export default function BlogPostPage() {
               <div className="flex items-center space-x-6 text-muted-foreground">
                 <div className="flex items-center space-x-2">
                   <Calendar className="h-4 w-4" />
-                  <span>{new Date(post.published_date).toLocaleDateString('en-IN', {
+                  <span className="text-sm">{new Date(post.published_date).toLocaleDateString('en-IN', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
@@ -135,7 +136,7 @@ export default function BlogPostPage() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock className="h-4 w-4" />
-                  <span>{readingTime} min read</span>
+                  <span className="text-sm">{readingTime} min read</span>
                 </div>
               </div>
               
@@ -152,7 +153,7 @@ export default function BlogPostPage() {
                 {post.tags.map((tag, index) => (
                   <span 
                     key={index} 
-                    className="text-sm bg-primary/10 text-primary px-3 py-1 rounded-full"
+                    className="text-sm text-muted-foreground border border-border px-3 py-1 rounded-full"
                   >
                     {tag}
                   </span>
