@@ -4,7 +4,8 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import SEOHead from '@/components/SEOHead'
-import { supabase, BlogPost } from '@/lib/supabase'
+import { supabase } from '@/integrations/supabase/client'
+import type { BlogPost } from '@/lib/supabase'
 import { Calendar, ArrowRight, Search } from 'lucide-react'
 
 export default function Blog() {

@@ -4,7 +4,8 @@ import { Card, CardContent } from '@/components/ui/card'
 import SEOHead from '@/components/SEOHead'
 import { ArrowRight, TrendingUp, Users, Award, BookOpen } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { supabase, BlogPost } from '@/lib/supabase'
+import { supabase } from '@/integrations/supabase/client'
+import type { BlogPost } from '@/lib/supabase'
 
 export default function Home() {
   const [latestPosts, setLatestPosts] = useState<BlogPost[]>([])

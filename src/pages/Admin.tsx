@@ -8,7 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { toast } from '@/hooks/use-toast'
 import SEOHead from '@/components/SEOHead'
-import { supabase, BlogPost } from '@/lib/supabase'
+import { supabase } from '@/integrations/supabase/client'
+import type { BlogPost } from '@/lib/supabase'
 import { LogIn, Plus, Edit, Trash2, Eye } from 'lucide-react'
 
 const ADMIN_PIN = '01460686237'

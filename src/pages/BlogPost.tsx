@@ -4,7 +4,8 @@ import ReactMarkdown from 'react-markdown'
 import { Button } from '@/components/ui/button'
 import SEOHead from '@/components/SEOHead'
 import ShareButtons from '@/components/ShareButtons'
-import { supabase, BlogPost } from '@/lib/supabase'
+import { supabase } from '@/integrations/supabase/client'
+import type { BlogPost } from '@/lib/supabase'
 import { Calendar, ArrowLeft, Clock } from 'lucide-react'
 
 export default function BlogPostPage() {
