@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
@@ -7,7 +6,7 @@ import SEOHead from '@/components/SEOHead'
 import ShareButtons from '@/components/ShareButtons'
 import { supabase } from '@/integrations/supabase/client'
 import type { BlogPost } from '@/lib/supabase'
-import { Calendar, ArrowLeft, Clock } from 'lucide-react'
+import { Calendar, ArrowLeft, Clock, Tag } from 'lucide-react'
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -38,16 +37,18 @@ export default function BlogPostPage() {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto">
-          <div className="animate-pulse">
-            <div className="h-8 bg-muted rounded w-1/4 mb-6"></div>
-            <div className="h-12 bg-muted rounded mb-4"></div>
-            <div className="h-6 bg-muted rounded w-1/3 mb-8"></div>
-            <div className="space-y-4">
-              {[...Array(10)].map((_, i) => (
-                <div key={i} className="h-4 bg-muted rounded"></div>
-              ))}
+      <div className="min-h-screen bg-background">
+        <div className="container mx-auto px-4 py-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="animate-pulse space-y-6">
+              <div className="h-10 bg-surface-variant rounded-xl w-32"></div>
+              <div className="h-8 bg-surface-variant rounded-xl"></div>
+              <div className="h-6 bg-surface-variant rounded-xl w-1/3"></div>
+              <div className="space-y-4">
+                {[...Array(8)].map((_, i) => (
+                  <div key={i} className="h-4 bg-surface-variant rounded-lg"></div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -57,16 +58,21 @@ export default function BlogPostPage() {
 
   if (error || !post) {
     return (
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-3xl font-bold text-foreground mb-4">Post Not Found</h1>
-          <p className="text-muted-foreground mb-6">The blog post you're looking for doesn't exist.</p>
-          <Link to="/blog">
-            <Button>
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Blog
-            </Button>
-          </Link>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="container mx-auto px-4">
+          <div className="max-w-md mx-auto text-center">
+            <div className="w-16 h-16 bg-muted/20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <ArrowLeft className="h-8 w-8 text-muted-foreground" />
+            </div>
+            <h1 className="text-2xl font-bold text-foreground mb-4">Post Not Found</h1>
+            <p className="text-muted-foreground mb-6">The blog post you're looking for doesn't exist.</p>
+            <Link to="/blog">
+              <Button className="btn-native">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Blog
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     )
@@ -110,89 +116,103 @@ export default function BlogPostPage() {
         structuredData={structuredData}
       />
 
-      <article className="container mx-auto px-4 py-12 pt-20">
-        <div className="max-w-4xl mx-auto">
-          {/* Back to Blog */}
-          <Link to="/blog" className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-8">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Blog
-          </Link>
+      <div className="min-h-screen bg-background">
+        {/* Header */}
+        <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 border-b border-outline-variant">
+          <div className="container mx-auto px-4 py-8">
+            <Link to="/blog" className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-6 btn-native">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Blog
+            </Link>
 
-          {/* Article Header */}
-          <header className="mb-12">
-            <h1 className="text-2xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
-              {post.title}
-            </h1>
-            
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-              <div className="flex items-center space-x-6 text-muted-foreground">
-                <div className="flex items-center space-x-2">
-                  <Calendar className="h-4 w-4" />
-                  <span className="text-sm">{new Date(post.published_date).toLocaleDateString('en-IN', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}</span>
+            <article className="max-w-4xl mx-auto">
+              <header className="mb-8">
+                <h1 className="text-2xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
+                  {post.title}
+                </h1>
+                
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+                  <div className="flex items-center space-x-4 text-muted-foreground">
+                    <div className="flex items-center space-x-2">
+                      <Calendar className="h-4 w-4" />
+                      <span className="text-sm">{new Date(post.published_date).toLocaleDateString('en-IN', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Clock className="h-4 w-4" />
+                      <span className="text-sm">{readingTime} min read</span>
+                    </div>
+                  </div>
+                  
+                  <div className="sm:ml-auto">
+                    <ShareButtons 
+                      url={currentUrl}
+                      title={post.title}
+                      description={post.meta_description}
+                    />
+                  </div>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <Clock className="h-4 w-4" />
-                  <span className="text-sm">{readingTime} min read</span>
-                </div>
-              </div>
-              
-              <ShareButtons 
-                url={currentUrl}
-                title={post.title}
-                description={post.meta_description}
-              />
-            </div>
 
-            {/* Tags */}
-            {post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-8">
-                {post.tags.map((tag, index) => (
-                  <span 
-                    key={index} 
-                    className="text-sm text-muted-foreground border border-border px-3 py-1 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </header>
-
-          {/* Article Content */}
-          <div className="prose-blog">
-            {post.content_type === 'markdown' ? (
-              <ReactMarkdown>{post.content}</ReactMarkdown>
-            ) : (
-              <div dangerouslySetInnerHTML={{ __html: post.content }} />
-            )}
+                {/* Tags */}
+                {post.tags.length > 0 && (
+                  <div className="flex items-center gap-3 mb-8">
+                    <Tag className="h-4 w-4 text-muted-foreground" />
+                    <div className="flex flex-wrap gap-2">
+                      {post.tags.map((tag, index) => (
+                        <span 
+                          key={index} 
+                          className="text-sm text-primary bg-primary/10 px-3 py-1 rounded-full font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </header>
+            </article>
           </div>
-
-          {/* Article Footer */}
-          <footer className="mt-12 pt-8 border-t">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <h3 className="font-semibold text-foreground mb-2">Share this article</h3>
-                <ShareButtons 
-                  url={currentUrl}
-                  title={post.title}
-                  description={post.meta_description}
-                />
-              </div>
-              
-              <Link to="/blog">
-                <Button variant="outline">
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  Back to Blog
-                </Button>
-              </Link>
-            </div>
-          </footer>
         </div>
-      </article>
+
+        {/* Content */}
+        <div className="container mx-auto px-4 py-8">
+          <article className="max-w-4xl mx-auto">
+            <div className="prose-mobile">
+              {post.content_type === 'markdown' ? (
+                <ReactMarkdown>{post.content}</ReactMarkdown>
+              ) : (
+                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+              )}
+            </div>
+
+            {/* Footer */}
+            <footer className="mt-12 pt-8 border-t border-outline-variant">
+              <div className="bg-surface-variant/50 rounded-2xl p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-3">Share this article</h3>
+                    <ShareButtons 
+                      url={currentUrl}
+                      title={post.title}
+                      description={post.meta_description}
+                    />
+                  </div>
+                  
+                  <Link to="/blog">
+                    <Button variant="outline" className="btn-native">
+                      <ArrowLeft className="mr-2 h-4 w-4" />
+                      More Articles
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </footer>
+          </article>
+        </div>
+      </div>
     </>
   )
 }

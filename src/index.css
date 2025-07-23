@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Job Scope India Design System - Professional & Modern */
+/* Job Scope India - Mobile Native Design System */
 
 @layer base {
   :root {
@@ -15,18 +15,20 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Professional Blue Theme */
-    --primary: 214 100% 32%;        /* Deep professional blue */
+    /* Modern Mobile-First Color Palette */
+    --primary: 239 84% 67%;        /* Modern vibrant blue */
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 214 100% 45%;   /* Brighter blue for effects */
+    --primary-light: 239 84% 85%;   /* Light blue for backgrounds */
 
-    --secondary: 174 72% 38%;       /* Professional teal */
+    --secondary: 142 76% 36%;       /* Fresh green */
     --secondary-foreground: 0 0% 100%;
+    --secondary-light: 142 76% 90%; /* Light green */
 
-    --accent: 24 100% 58%;          /* Warm orange for CTAs */
+    --accent: 262 83% 58%;          /* Purple accent */
     --accent-foreground: 0 0% 100%;
+    --accent-light: 262 83% 95%;    /* Light purple */
 
-    --muted: 210 40% 96.1%;
+    --muted: 210 40% 98%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --destructive: 0 84.2% 60.2%;
@@ -34,35 +36,29 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 214 100% 32%;
+    --ring: 239 84% 67%;
 
-    /* Design System Extensions */
-    --gradient-primary: linear-gradient(135deg, hsl(214 100% 32%), hsl(214 100% 45%));
-    --gradient-secondary: linear-gradient(135deg, hsl(174 72% 38%), hsl(174 72% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(214 100% 32%), hsl(174 72% 38%));
+    /* Mobile-Native Design Tokens */
+    --surface: 0 0% 99%;
+    --surface-variant: 210 40% 96%;
+    --outline: 220 13% 91%;
+    --outline-variant: 220 13% 95%;
     
-    --shadow-elegant: 0 10px 30px -10px hsl(214 100% 32% / 0.3);
-    --shadow-card: 0 4px 20px -2px hsl(214 100% 32% / 0.08);
-    --shadow-glow: 0 0 40px hsl(214 100% 45% / 0.4);
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    --radius: 0.75rem;
+    --radius: 1rem;
+    --radius-sm: 0.75rem;
+    --radius-xs: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -76,15 +72,17 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 214 100% 45%;
+    --primary: 239 84% 67%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 214 100% 55%;
+    --primary-light: 239 84% 20%;
 
-    --secondary: 174 72% 45%;
+    --secondary: 142 76% 36%;
     --secondary-foreground: 0 0% 100%;
+    --secondary-light: 142 76% 15%;
 
-    --accent: 24 100% 65%;
+    --accent: 262 83% 58%;
     --accent-foreground: 0 0% 100%;
+    --accent-light: 262 83% 15%;
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
@@ -94,7 +92,13 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 214 100% 45%;
+    --ring: 239 84% 67%;
+
+    --surface: 222.2 84% 6%;
+    --surface-variant: 217.2 32.6% 15%;
+    --outline: 217.2 32.6% 25%;
+    --outline-variant: 217.2 32.6% 20%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -112,40 +116,50 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground font-inter antialiased;
     font-feature-settings: 'rlig' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .font-hindi {
     font-family: 'Mukta', 'Inter', sans-serif;
   }
 
-  /* Custom scrollbar */
+  /* Mobile-optimized scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
   
   ::-webkit-scrollbar-track {
-    @apply bg-muted;
+    @apply bg-transparent;
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary/30 rounded-full;
+    @apply bg-muted-foreground/20 rounded-full;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary/50;
+    @apply bg-muted-foreground/30;
   }
 
-  /* Smooth animations */
-  .animate-fade-up {
-    animation: fadeUp 0.6s ease-out;
+  /* Native-like animations */
+  .animate-slide-up {
+    animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  @keyframes fadeUp {
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  @keyframes slideUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(16px);
     }
     to {
       opacity: 1;
@@ -153,40 +167,167 @@
     }
   }
 
-  /* Blog content styles */
-  .prose-blog {
-    @apply prose prose-lg max-w-none;
-  }
-  
-  .prose-blog h1 {
-    @apply text-3xl md:text-4xl font-bold text-foreground mb-6;
-  }
-  
-  .prose-blog h2 {
-    @apply text-2xl md:text-3xl font-semibold text-foreground mt-8 mb-4;
-  }
-  
-  .prose-blog h3 {
-    @apply text-xl md:text-2xl font-medium text-foreground mt-6 mb-3;
-  }
-  
-  .prose-blog p {
-    @apply text-muted-foreground leading-relaxed mb-4;
-  }
-  
-  .prose-blog a {
-    @apply text-primary hover:text-primary-glow transition-colors;
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
-  .prose-blog blockquote {
-    @apply border-l-4 border-primary/30 pl-4 italic text-muted-foreground bg-muted/50 py-2 rounded-r;
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
-  .prose-blog code {
-    @apply bg-muted px-2 py-1 rounded text-sm font-mono;
+  /* Mobile-first touch targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
   }
 
-  .prose-blog pre {
-    @apply bg-muted p-4 rounded-lg overflow-x-auto;
+  /* Native-like cards */
+  .card-native {
+    @apply bg-card border-0 rounded-2xl shadow-sm;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .card-native:active {
+    @apply scale-[0.98];
+    transition: transform 0.1s ease-out;
+  }
+
+  /* Blog content styles - mobile optimized */
+  .prose-mobile {
+    @apply prose prose-slate max-w-none;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .prose-mobile h1 {
+    @apply text-2xl font-bold text-foreground mb-4 leading-tight;
+  }
+  
+  .prose-mobile h2 {
+    @apply text-xl font-semibold text-foreground mt-6 mb-3 leading-tight;
+  }
+  
+  .prose-mobile h3 {
+    @apply text-lg font-medium text-foreground mt-5 mb-2 leading-tight;
+  }
+  
+  .prose-mobile p {
+    @apply text-foreground/80 leading-relaxed mb-4;
+  }
+  
+  .prose-mobile a {
+    @apply text-primary no-underline font-medium;
+    text-decoration: none;
+  }
+
+  .prose-mobile a:hover {
+    @apply underline;
+  }
+
+  .prose-mobile blockquote {
+    @apply border-l-4 border-primary/30 pl-4 italic text-foreground/70 bg-surface-variant/50 py-3 rounded-r-lg my-4;
+  }
+
+  .prose-mobile code {
+    @apply bg-surface-variant px-2 py-1 rounded-md text-sm font-mono text-foreground;
+  }
+
+  .prose-mobile pre {
+    @apply bg-surface-variant p-4 rounded-xl overflow-x-auto text-sm;
+  }
+
+  .prose-mobile ul, .prose-mobile ol {
+    @apply pl-5 space-y-1;
+  }
+
+  .prose-mobile li {
+    @apply text-foreground/80;
+  }
+
+  /* Mobile-optimized form elements */
+  .input-native {
+    @apply bg-surface-variant border-0 rounded-xl px-4 py-3 text-base;
+    -webkit-appearance: none;
+  }
+
+  .input-native:focus {
+    @apply ring-2 ring-primary/20 bg-background;
+  }
+
+  /* Safe area handling for mobile */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Native-like buttons */
+  .btn-native {
+    @apply rounded-xl font-medium transition-all duration-200 touch-target;
+  }
+
+  .btn-native:active {
+    @apply scale-95;
+  }
+
+  /* Floating action button */
+  .fab {
+    @apply fixed bottom-6 right-6 w-14 h-14 bg-primary text-primary-foreground rounded-full shadow-lg flex items-center justify-center z-50;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+  }
+
+  .fab:active {
+    @apply scale-90;
+  }
+}
+
+/* Mobile-specific utilities */
+@media (max-width: 768px) {
+  .container {
+    @apply px-4;
+  }
+  
+  .text-responsive {
+    @apply text-sm;
+  }
+  
+  .heading-responsive {
+    @apply text-xl;
+  }
+  
+  .card-mobile {
+    @apply mx-4 rounded-2xl;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .text-responsive {
+    @apply text-base;
+  }
+  
+  .heading-responsive {
+    @apply text-2xl;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .text-responsive {
+    @apply text-base;
+  }
+  
+  .heading-responsive {
+    @apply text-3xl;
   }
 }
