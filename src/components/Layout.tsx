@@ -14,12 +14,12 @@ export default function Layout({ children }: LayoutProps) {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between px-4">
+        <div className="container flex h-12 md:h-16 items-center justify-between px-3 md:px-4">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
-              <span className="text-white font-bold text-sm">JSI</span>
+            <div className="h-6 w-6 md:h-8 md:w-8 rounded-lg bg-gradient-primary flex items-center justify-center">
+              <span className="text-white font-bold text-xs md:text-sm">JSI</span>
             </div>
-            <span className="font-bold text-xl text-foreground">Job Scope India</span>
+            <span className="font-bold text-lg md:text-xl text-foreground">Job Scope India</span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-6">
@@ -50,19 +50,19 @@ export default function Layout({ children }: LayoutProps) {
           </nav>
 
           {/* Mobile Navigation */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="md:hidden flex items-center space-x-1">
             <Link to="/">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
                 <Home className="h-4 w-4" />
               </Button>
             </Link>
             <Link to="/blog">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
                 <BookOpen className="h-4 w-4" />
               </Button>
             </Link>
             <Link to="/admin">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
                 <User className="h-4 w-4" />
               </Button>
             </Link>
