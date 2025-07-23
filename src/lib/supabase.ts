@@ -1,30 +1,4 @@
 // This file only contains types now - the actual client is in /integrations/supabase/client.ts
+import type { Tables } from '@/integrations/supabase/types'
 
-export type BlogPost = {
-  id: string
-  title: string
-  slug: string
-  content: string
-  content_type: 'markdown' | 'html'
-  seo_title: string
-  meta_description: string
-  focus_keywords: string
-  canonical_url?: string
-  og_image_url?: string
-  tags: string[]
-  published_date: string
-  created_at: string
-  updated_at: string
-}
-
-export type Database = {
-  public: {
-    Tables: {
-      blog_posts: {
-        Row: BlogPost
-        Insert: Omit<BlogPost, 'id' | 'created_at' | 'updated_at'>
-        Update: Partial<Omit<BlogPost, 'id' | 'created_at' | 'updated_at'>>
-      }
-    }
-  }
-}
+export type BlogPost = Tables<'blog_posts'>

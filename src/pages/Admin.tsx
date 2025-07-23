@@ -125,7 +125,7 @@ export default function Admin() {
       title: post.title,
       slug: post.slug,
       content: post.content,
-      content_type: post.content_type,
+      content_type: post.content_type as 'markdown' | 'html' || 'markdown',
       seo_title: post.seo_title,
       meta_description: post.meta_description,
       focus_keywords: post.focus_keywords,
