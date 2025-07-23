@@ -117,16 +117,16 @@ export default function BlogPostPage() {
       />
 
       <div className="min-h-screen bg-background">
-        {/* Header */}
-        <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 border-b border-outline-variant">
-          <div className="container mx-auto px-4 py-8">
+        {/* Header - Clean minimal design */}
+        <div className="bg-background border-b border-outline-variant">
+          <div className="container mx-auto px-4 py-6">
             <Link to="/blog" className="inline-flex items-center text-muted-foreground hover:text-foreground transition-colors mb-6 btn-native">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Blog
             </Link>
 
             <article className="max-w-4xl mx-auto">
-              <header className="mb-8">
+              <header className="mb-6">
                 <h1 className="text-2xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
                   {post.title}
                 </h1>
@@ -158,13 +158,13 @@ export default function BlogPostPage() {
 
                 {/* Tags */}
                 {post.tags.length > 0 && (
-                  <div className="flex items-center gap-3 mb-8">
+                  <div className="flex items-center gap-3 mb-6">
                     <Tag className="h-4 w-4 text-muted-foreground" />
                     <div className="flex flex-wrap gap-2">
                       {post.tags.map((tag, index) => (
                         <span 
                           key={index} 
-                          className="text-sm text-primary bg-primary/10 px-3 py-1 rounded-full font-medium"
+                          className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full font-medium"
                         >
                           {tag}
                         </span>

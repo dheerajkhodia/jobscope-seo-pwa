@@ -43,29 +43,28 @@ export default function Home() {
       <SEOHead structuredData={structuredData} />
       
       {/* Hero Section - Mobile Native */}
-      <section className="relative bg-gradient-to-br from-primary via-primary to-accent text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative container mx-auto px-4 py-16 md:py-24">
+      <section className="relative bg-background overflow-hidden">
+        <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="max-w-4xl mx-auto text-center animate-slide-up">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+            <div className="inline-flex items-center bg-muted rounded-full px-4 py-2 mb-6">
               <Sparkles className="h-4 w-4 mr-2" />
-              <span className="text-sm font-medium">Career Growth Platform</span>
+              <span className="text-sm font-medium text-muted-foreground">Career Growth Platform</span>
             </div>
             
-            <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight text-foreground">
               Navigate Your Career in
-              <span className="block text-accent-foreground bg-accent/20 backdrop-blur-sm rounded-2xl px-4 py-2 mt-2 inline-block">
+              <span className="block text-primary mt-2">
                 India's Job Market
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl mb-8 text-white/90 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl mb-8 text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Get expert insights, latest trends, and career guidance to accelerate your professional growth.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/blog">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 btn-native px-8 py-4 text-lg font-semibold w-full sm:w-auto">
+                <Button size="lg" className="btn-native px-8 py-4 text-lg font-semibold w-full sm:w-auto">
                   Explore Insights
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -73,7 +72,7 @@ export default function Home() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-white/30 text-white hover:bg-white/10 btn-native px-8 py-4 text-lg font-semibold w-full sm:w-auto backdrop-blur-sm"
+                className="btn-native px-8 py-4 text-lg font-semibold w-full sm:w-auto"
               >
                 Latest Trends
               </Button>
@@ -136,7 +135,7 @@ export default function Home() {
 
       {/* Latest Blog Posts - Mobile Optimized */}
       {latestPosts.length > 0 && (
-        <section className="py-16 bg-surface-variant/30">
+        <section className="py-16 bg-muted/20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
@@ -190,17 +189,17 @@ export default function Home() {
       )}
 
       {/* CTA Section - Mobile Native */}
-      <section className="py-16 bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="py-16 bg-muted">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground">
               Ready to Advance Your Career?
             </h2>
-            <p className="text-lg mb-8 text-white/90 leading-relaxed">
+            <p className="text-lg mb-8 text-muted-foreground leading-relaxed">
               Join thousands of professionals who trust Job Scope India for career insights and market intelligence.
             </p>
             <Link to="/blog">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 btn-native px-8 py-4 text-lg font-semibold">
+              <Button size="lg" className="btn-native px-8 py-4 text-lg font-semibold">
                 Start Exploring
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>

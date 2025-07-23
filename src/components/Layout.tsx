@@ -78,7 +78,7 @@ export default function Layout({ children }: LayoutProps) {
 
         {/* Mobile Navigation Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-background border-t border-outline-variant animate-slide-up">
+          <div className="md:hidden bg-background/95 backdrop-blur-md border-t border-outline-variant animate-slide-up">
             <div className="container py-4 space-y-2">
               <Link to="/" onClick={() => setMobileMenuOpen(false)}>
                 <Button
@@ -121,7 +121,7 @@ export default function Layout({ children }: LayoutProps) {
       </main>
 
       {/* Mobile-First Footer */}
-      <footer className="bg-surface-variant border-t border-outline-variant safe-area-bottom">
+      <footer className="bg-muted/30 border-t border-outline-variant safe-area-bottom">
         <div className="container py-8">
           <div className="text-center space-y-4">
             <div className="flex items-center justify-center space-x-3">

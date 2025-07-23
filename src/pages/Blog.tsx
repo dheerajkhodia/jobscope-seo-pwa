@@ -64,9 +64,9 @@ export default function Blog() {
       />
 
       <div className="min-h-screen bg-background">
-        {/* Header Section */}
-        <div className="bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 border-b border-outline-variant">
-          <div className="container mx-auto px-4 py-12">
+        {/* Header Section - Clean minimal */}
+        <div className="bg-background border-b border-outline-variant">
+          <div className="container mx-auto px-4 py-8">
             <div className="max-w-2xl mx-auto text-center">
               <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Career Insights Blog
@@ -218,7 +218,7 @@ export default function Blog() {
                             {post.tags.slice(0, 2).map((tag, tagIndex) => (
                               <span 
                                 key={tagIndex} 
-                                className="text-xs text-primary bg-primary/10 px-2 py-1 rounded-full font-medium"
+                                className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded-full font-medium"
                               >
                                 {tag}
                               </span>
