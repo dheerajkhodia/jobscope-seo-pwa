@@ -14,7 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blog_posts: {
+        Row: {
+          canonical_url: string | null
+          content: string
+          content_type: string | null
+          created_at: string | null
+          focus_keywords: string
+          id: string
+          meta_description: string
+          og_image_url: string | null
+          published_date: string
+          seo_title: string | null
+          slug: string
+          tags: string[] | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          canonical_url?: string | null
+          content: string
+          content_type?: string | null
+          created_at?: string | null
+          focus_keywords: string
+          id?: string
+          meta_description: string
+          og_image_url?: string | null
+          published_date: string
+          seo_title?: string | null
+          slug: string
+          tags?: string[] | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          canonical_url?: string | null
+          content?: string
+          content_type?: string | null
+          created_at?: string | null
+          focus_keywords?: string
+          id?: string
+          meta_description?: string
+          og_image_url?: string | null
+          published_date?: string
+          seo_title?: string | null
+          slug?: string
+          tags?: string[] | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
